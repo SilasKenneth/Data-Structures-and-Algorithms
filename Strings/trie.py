@@ -31,11 +31,6 @@ class Node(object):
         if not node in self.children:
             self.children[node] = Node()
         self.children[node].insert(word[1:], current_word)
-    def print_words(self):
-        if self.isWord:
-            print(self.word)
-        for child in self.children.keys():
-            self.children[child].print_words()
     def collect(self, result: list = []) -> list:
         # Collect all words from the current node
         if self.isWord:
@@ -62,8 +57,6 @@ class Trie(object):
         if self.root is None:
             self.root = Node()
         self.root.insert(word, [])
-    def print_words(self) -> None:
-        self.root.print_words()
     def search_with_prefix(self, prefix: str) -> list:
         return self.root.search_with_prefix(prefix)
 
